@@ -50,7 +50,7 @@ export class SigninComponent implements OnInit {
   signin() {
     this.afAuth.signInWithEmailAndPassword(this.email.value, this.password.value).then(() => {
       this.snackBar.open('Success!', 'OK', {duration: 2000});
-      this.router.navigate(['./blog']);
+      this.router.navigate(['Home']);
     }).catch((err) => {
       this.snackBar.open(err, 'OK', {duration: 2000});
     });
@@ -63,7 +63,7 @@ export class SigninComponent implements OnInit {
     return this.authService.updateUserData(credetial.user)
     .then(() => {
       this.snackBar.open('Success!', 'OK', {duration: 2000});
-      this.router.navigate(['/blog']);
+      this.router.navigate(['Home']);
     })
     .catch((err) => {
       this.snackBar.open(err, 'OK', {duration: 2000});
