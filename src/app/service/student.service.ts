@@ -1,4 +1,4 @@
-import { Student } from './../student-list/student';
+import { Student } from './../../app/model/student.model';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
