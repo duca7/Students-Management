@@ -12,7 +12,6 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { StudentListModule } from './student-list/student-list.module';
 
 @NgModule({
   declarations: [
@@ -29,7 +28,7 @@ import { StudentListModule } from './student-list/student-list.module';
     AngularFirestoreModule,
     AngularFireAuthModule,
     BrowserAnimationsModule,
-    StudentListModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]
