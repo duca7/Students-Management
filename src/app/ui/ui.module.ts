@@ -12,7 +12,7 @@ import { RouterModule } from '@angular/router';
     CommonModule,
     MatToolbarModule,
     MatMenuModule,
-    RouterModule
+    RouterModule,
   ],
   exports:[
     NavBarComponent

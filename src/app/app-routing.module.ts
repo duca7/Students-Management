@@ -3,9 +3,9 @@ import { Routes, RouterModule } from '@angular/router';
 
 
 const routes: Routes = [
-  { path: '', loadChildren:() => import('./pages/home/home.module').then(m => m.HomeModule) },
   { path: 'Login', loadChildren: () => import('./pages/login/login.module').then(m => m.LoginModule) },
-  { path: 'Home', loadChildren: () => import('./pages/home/home.module').then(m => m.HomeModule) }
+  { path: '', redirectTo: '/studentlist', pathMatch: 'full'},
+  { path: '', loadChildren: './student/student.module#StudentModule' }
 
   ];
 
