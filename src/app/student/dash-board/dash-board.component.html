@@ -7,7 +7,12 @@
       <input matInput [(ngModel)]="data.className" required autocomplete="off" class="class-name">
     </mat-form-field>
     <br>
-    <mat-form-field [(ngModel)]="data.firstName" appearance="outline" style="margin-left: 10%;" >
+    <mat-form-field appearance="outline" class="class-add">
+      <mat-label>Student ID</mat-label>
+      <input matInput required autocomplete="off">
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="outline" style="margin-left: 10%;">
       <mat-label>First Name</mat-label>
       <input matInput required autocomplete="off">
     </mat-form-field>
