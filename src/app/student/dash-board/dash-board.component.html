@@ -1,0 +1,48 @@
+<app-nav-bar></app-nav-bar>
+
+<div class="card">
+  <div class="test">
+    <mat-form-field appearance="outline" class="class-add">
+      <mat-label>CLass Name</mat-label>
+      <input matInput required autocomplete="off" class="class-name">
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="outline" style="margin-left: 10%;">
+      <mat-label>First Name</mat-label>
+      <input matInput required autocomplete="off">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" style="margin-left: 10%;">
+      <mat-label>Last Name</mat-label>
+      <input matInput required autocomplete="off">
+    </mat-form-field>
+    <br>
+    <mat-form-field style="margin-left: 10%;">
+      <mat-label>Choose a date</mat-label>
+      <input matInput [matDatepicker]="picker" required autocomplete="off">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" style="margin-left: 5%;">
+      <mat-label>Sex</mat-label>
+      <mat-select>
+        <mat-option value="option">Female</mat-option>
+        <mat-option value="option">Male</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" style="margin-left: 6%;" >
+      <mat-label>Phone Number</mat-label>
+      <input matInput required autocomplete="off">
+    </mat-form-field>
+  <br>
+    <mat-form-field appearance="outline" class="class-add">
+      <mat-label>Adrress</mat-label>
+      <input matInput required autocomplete="off">
+    </mat-form-field>
+  <br>
+  <button mat-raised-button style="margin: 2% 0 0 45%;">Create</button>
+  </div>
+
+</div>
