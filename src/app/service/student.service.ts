@@ -27,24 +27,23 @@ export class StudentService {
   }
 
   getStudentData(id: string) { //get id of the one by one list student
-    this.studentDoc = this.db.doc<Student>(`students/${id}`)
-    return this.studentDoc.valueChanges()
+    this.studentDoc = this.db.doc<Student>(`students/${id}`);
+    return this.studentDoc.valueChanges();
   }
 
   getStudent(id: string) {
-    return this.db.doc<Student>(`students/${id}`)
+    return this.db.doc<Student>(`students/${id}`);
   }
 
   createStudent(data: Student) {
-    this.studentCollection.add(data)
+    this.studentCollection.add(data);
   }
 
   deleteStudent(id: string) {
-    return this.getStudent(id).delete()
-  }
+    return this.getStudent(id).delete();  }
 
   updateStudent(id: string, formData) {
-    return this.getStudent(id).update(formData)
+    return this.getStudent(id).update(formData);
   }
 
 }
