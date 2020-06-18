@@ -2,7 +2,8 @@ export interface Student{
     id?:string,
     firstName?:string,
     lastName?:string,
-    DOB?:Date,
+    sex?:string,
+    DOB?:object,
     className?:string,
     address?:string,
     phoneNumber?:string

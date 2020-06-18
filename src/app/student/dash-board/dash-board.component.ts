@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { StudentService } from 'src/app/service/student.service';
+import { Student } from 'src/app/model/student.model';
+
 
 @Component({
   selector: 'app-dash-board',
@@ -7,9 +10,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashBoardComponent implements OnInit {
 
-  constructor() { }
+  data: Student;
+  date = null;
+  constructor(public studentService: StudentService) {
+    this.data = {
+      firstName: '',
+      lastName: '',
+      DOB: null,
+      sex: '',
+      className: '',
+      address: '',
+      phoneNumber: ''
+    }
+  }
 
   ngOnInit(): void {
   }
 
+
+
+  createStudent() {
+    this.studentService.createStudent(this.data);
+  }
 }

@@ -7,21 +7,20 @@ import 'rxjs/add/operator/map';
 })
 export class StudentService {
 
-  studentCollection: AngularFirestoreCollection<Student>
-  studentDoc: AngularFirestoreDocument<Student>
+  studentCollection: AngularFirestoreCollection<Student>;
+  studentDoc: AngularFirestoreDocument<Student>;
+  successMsg = 'Data successfully saved.';
 
   constructor(private db: AngularFirestore) {
-    this.studentCollection = this.db.collection('students', ref =>
-      ref.orderBy('addBuy', 'desc')
-    )
+    this.studentCollection = this.db.collection<Student>('students')
   }
 
   getStudents() {
     return this.studentCollection.snapshotChanges().map(actions => {
       return actions.map(a => {
-        const data = a.payload.doc.data() as Student
-        const id = a.payload.doc.id
-        return { id, ...data }
+        const data = a.payload.doc.data() as Student;
+        const id = a.payload.doc.id;
+        return { id, ...data }; 
       })
     })
   }
@@ -36,7 +35,9 @@ export class StudentService {
   }
 
   createStudent(data: Student) {
-    this.studentCollection.add(data);
+    this.studentCollection.add(data).then(_=>{
+     return alert(this.successMsg);
+    });
   }
 
   deleteStudent(id: string) {
