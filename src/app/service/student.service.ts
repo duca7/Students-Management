@@ -18,9 +18,9 @@ export class StudentService {
   getStudents() {
     return this.studentCollection.snapshotChanges().map(actions => {
       return actions.map(a => {
-        const data = a.payload.doc.data() as Student;
-        const id = a.payload.doc.id;
-        return { id, ...data }; 
+        let data = a.payload.doc.data() as Student;
+        let id =  a.payload.doc.id;
+        return { id, ...data };
       })
     })
   }
@@ -35,13 +35,12 @@ export class StudentService {
   }
 
   createStudent(data: Student) {
-    this.studentCollection.add(data).then(_=>{
-     return alert(this.successMsg);
-    });
+    this.studentCollection.doc(data.id).set(data);
   }
 
   deleteStudent(id: string) {
-    return this.getStudent(id).delete();  }
+    return this.getStudent(id).delete();
+  }
 
   updateStudent(id: string, formData) {
     return this.getStudent(id).update(formData);
