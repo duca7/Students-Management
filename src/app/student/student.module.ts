@@ -15,8 +15,8 @@ import {MatNativeDateModule} from '@angular/material/core';
 import {MatSelectModule} from '@angular/material/select';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
-
-
+import {MatTableModule} from '@angular/material/table';
+import {MatPaginatorModule} from '@angular/material/paginator';
 const routes : Routes =[
   {path: 'studentlist',component:StudentListComponent},
   {path: 'dashboard', component: DashBoardComponent},
@@ -38,7 +38,9 @@ const routes : Routes =[
     MatSelectModule,
     MatIconModule,
     MatButtonModule,
-    
+    MatTableModule,
+    MatPaginatorModule
+
   ],
   exports:[
     StudentListComponent,
