@@ -37,7 +37,7 @@ export class StudentService {
     return this.studentCollection.doc(id);
   }
 
-  checkExsitStudent(id: string) {
+  checkExistStudent(id: string) {
     return new Promise((resolve, reject) => {
       this.getStudent(id).get().toPromise().then((doc) => {
         if (doc.exists) {
@@ -53,8 +53,7 @@ export class StudentService {
   }
 
   async createStudent(data: Student) {
-    let isExist = await this.checkExsitStudent(data.id);
-
+    let isExist = await this.checkExistStudent(data.id);
     if (isExist != true) {
       return this.studentCollection.doc(data.id).set(data).then(_ => alert(this.successMsg));
     } else {
@@ -62,8 +61,14 @@ export class StudentService {
     }
   }
 
-  deleteStudent(id: string) {
-    return this.getStudent(id).delete();
+  async deleteStudent(id: string) {
+    let isExist = await this.checkExistStudent(id);
+    if (isExist===true) {
+      this.getStudent(id).delete();
+      return alert('Delete succesfull');
+    } else {
+      return alert('Cannot find student');
+    }
   }
 
   updateStudent(id: string, formData) {
