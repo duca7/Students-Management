@@ -2,6 +2,8 @@ import { Student } from './../../app/model/student.model';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/toPromise';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -10,6 +12,7 @@ export class StudentService {
   studentCollection: AngularFirestoreCollection<Student>;
   studentDoc: AngularFirestoreDocument<Student>;
   successMsg = 'Data successfully saved.';
+  // student:Observable<Student> 
 
   constructor(private db: AngularFirestore) {
     this.studentCollection = this.db.collection<Student>('students')
@@ -19,23 +22,44 @@ export class StudentService {
     return this.studentCollection.snapshotChanges().map(actions => {
       return actions.map(a => {
         let data = a.payload.doc.data() as Student;
-        let id =  a.payload.doc.id;
+        let id = a.payload.doc.id;
         return { id, ...data };
       })
     })
   }
 
   getStudentData(id: string) { //get id of the one by one list student
-    this.studentDoc = this.db.doc<Student>(`students/${id}`);
+    // this.studentDoc = this.db.doc<Student>(`students/${id}`);
     return this.studentDoc.valueChanges();
   }
 
   getStudent(id: string) {
-    return this.db.doc<Student>(`students/${id}`);
+    return this.studentCollection.doc(id);
   }
 
-  createStudent(data: Student) {
-    this.studentCollection.doc(data.id).set(data);
+  checkExsitStudent(id: string) {
+    return new Promise((resolve, reject) => {
+      this.getStudent(id).get().toPromise().then((doc) => {
+        if (doc.exists) {
+          // console.log(doc.data());
+          resolve(true);
+        } else {
+          // console.log('false');
+          resolve(false)
+        }
+      });
+    });
+
+  }
+
+  async createStudent(data: Student) {
+    let isExist = await this.checkExsitStudent(data.id);
+
+    if (isExist != true) {
+      return this.studentCollection.doc(data.id).set(data).then(_ => alert(this.successMsg));
+    } else {
+      return alert('Your account is already exsit');
+    }
   }
 
   deleteStudent(id: string) {
