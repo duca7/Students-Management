@@ -3,6 +3,7 @@ import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument 
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -12,9 +13,12 @@ export class StudentService {
   studentCollection: AngularFirestoreCollection<Student>;
   studentDoc: AngularFirestoreDocument<Student>;
   successMsg = 'Data successfully saved.';
-  // student:Observable<Student> 
+  // student:Observable<Student>
 
-  constructor(private db: AngularFirestore) {
+  constructor(
+    private db: AngularFirestore,
+    private router: Router
+    ) {
     this.studentCollection = this.db.collection<Student>('students')
   }
 
@@ -55,7 +59,9 @@ export class StudentService {
   async createStudent(data: Student) {
     let isExist = await this.checkExistStudent(data.id);
     if (isExist != true) {
-      return this.studentCollection.doc(data.id).set(data).then(_ => alert(this.successMsg));
+      return this.studentCollection.doc(data.id).set(data).then(_ =>
+        alert(this.successMsg));
+
     } else {
       return alert('Your account is already exsit');
     }

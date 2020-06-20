@@ -5,7 +5,9 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatMenuModule} from '@angular/material/menu';
 import { RouterModule } from '@angular/router';
-
+import { MatIconModule } from '@angular/material/icon';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
 @NgModule({
   declarations: [NavBarComponent],
   imports: [
@@ -13,6 +15,9 @@ import { RouterModule } from '@angular/router';
     MatToolbarModule,
     MatMenuModule,
     RouterModule,
+    MatIconModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   exports:[
     NavBarComponent

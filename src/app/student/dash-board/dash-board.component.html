@@ -17,7 +17,7 @@
       <input matInput required autocomplete="off">
     </mat-form-field>
 
-    <mat-form-field appearance="outline" style="margin-left: 10%;">
+    <mat-form-field appearance="outline" style="margin-left: 5%;">
       <mat-label>Last Name</mat-label>
       <input [(ngModel)]="data.lastName" matInput required autocomplete="off">
     </mat-form-field>
@@ -47,7 +47,8 @@
       <input [(ngModel)]="data.address" matInput required autocomplete="off">
     </mat-form-field>
   <br>
-  <button mat-raised-button style="margin: 2% 0 0 45%;" (click)="createStudent()">Create</button>
+  <button mat-raised-button style="margin: 2% 0 0 40%;" (click)="createStudent()"  >Create</button>
+  <button mat-raised-button style="margin-left: 5%;"  >Update</button>
   </div>
 
 </div>
