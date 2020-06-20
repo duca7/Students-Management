@@ -5,7 +5,7 @@ p{
   margin-top: 3vh;
 }
 .example-spacer {
-  flex: 1 1 auto;
+  flex: 1 1  auto;
 }
 
 .navBarContainer {
@@ -64,6 +64,11 @@ p{
 
 .btn-login:hover{
   cursor: pointer;
+}
+
+.search-bar{
+  margin: 1% 0 0 5%;
+
 }
 @media (max-width: 750px) {
   app-nav-items {
