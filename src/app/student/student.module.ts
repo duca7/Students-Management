@@ -16,7 +16,6 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {MatTableModule} from '@angular/material/table';
-import {MatPaginatorModule} from '@angular/material/paginator';
 
 const routes : Routes =[
   {path: 'studentlist',component:StudentListComponent},
@@ -33,14 +32,14 @@ const routes : Routes =[
     FormsModule,
     MatSnackBarModule,
     MatFormFieldModule,
-    MatInputModule,  
+    MatInputModule,
     MatDatepickerModule,
     MatNativeDateModule,
     MatSelectModule,
     MatIconModule,
     MatButtonModule,
     MatTableModule,
-    MatPaginatorModule
+
 
   ],
   exports:[
