@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 import { Router } from '@angular/router';
+import { async } from '@angular/core/testing';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +19,7 @@ export class StudentService {
   constructor(
     private db: AngularFirestore,
     private router: Router
-    ) {
+  ) {
     this.studentCollection = this.db.collection<Student>('students')
   }
 
@@ -32,7 +33,20 @@ export class StudentService {
     })
   }
 
-  getStudentData(id: string) { //get id of the one by one list student
+  async getAllStudent() {
+    let allStudent =[];
+    // return await this.db.collection('students').get();
+    await this.studentCollection.get().pipe().subscribe((data)=>{
+      data.docs.map(a=>{
+        allStudent.push(a.data());
+        console.log(a.data());
+      })
+      
+    });
+    return allStudent;
+  }
+
+  getStudentData() { //get id of the one by one list student
     // this.studentDoc = this.db.doc<Student>(`students/${id}`);
     return this.studentDoc.valueChanges();
   }
@@ -69,7 +83,7 @@ export class StudentService {
 
   async deleteStudent(id: string) {
     let isExist = await this.checkExistStudent(id);
-    if (isExist===true) {
+    if (isExist === true) {
       this.getStudent(id).delete();
       return alert('Delete succesfull');
     } else {

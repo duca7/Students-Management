@@ -33,7 +33,7 @@ const routes : Routes =[
     FormsModule,
     MatSnackBarModule,
     MatFormFieldModule,
-    MatInputModule,
+    MatInputModule,  
     MatDatepickerModule,
     MatNativeDateModule,
     MatSelectModule,

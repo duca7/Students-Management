@@ -1,9 +1,9 @@
 import { Student } from './../../model/student.model';
 import { StudentService } from './../../service/student.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatTableDataSource } from '@angular/material/table';
-import { MatPaginator } from '@angular/material/paginator';
+
 import { Observable } from 'rxjs';
+
 
 @Component({
   selector: 'app-student-list',
@@ -12,15 +12,18 @@ import { Observable } from 'rxjs';
 })
 export class StudentListComponent implements OnInit {
 
-  students : Observable<Student[]>
+  students: Student;
   constructor(
-    private studentService : StudentService
-  ){}
+    private studentService: StudentService
+  ) { }
 
-  ngOnInit(){
-    this.students = this.studentService.getStudents();
+  ngOnInit() {
+
+  this.studentService.getAllStudent();
   }
 
   headers = ["Class Name", "Student ID", "First Name", "Last Name", "DOB", "Gender", "Phone Number", "Address", "Edit"];
+
+
 }
 
