@@ -12,28 +12,47 @@ import { Router } from '@angular/router';
 export class DashBoardComponent implements OnInit {
 
   data: Student;
-  date = null;
+
   constructor(
     public studentService: StudentService,
-    ) {
+  ) {
     this.data = {
-      firstName: '',
-      lastName: '',
+      firstName: null,
+      lastName: null,
       DOB: null,
-      sex: '',
-      className: '',
-      address: '',
-      phoneNumber: ''
+      sex: null,
+      className: null,
+      address: null,
+      phoneNumber: null
     }
   }
 
   ngOnInit(): void {
   }
 
-
-
   createStudent() {
     this.studentService.createStudent(this.data);
 
   }
+
+  deleteStudent() {
+    this.studentService.deleteStudent(this.data.id)
+  }
+
+  removeNullNode() {
+    for (var i in this.data) {
+      if (this.data[i] === null) {
+        delete this.data[i];
+      }
+    }
+  }
+
+  async updateStudent() {
+    await this.removeNullNode();
+    let cleanData = this.data
+    console.log(cleanData);
+
+    this.studentService.updateStudent(this.data.id,cleanData)
+  }
+
 }

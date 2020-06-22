@@ -18,9 +18,9 @@ export class StudentService {
   studentCollection: AngularFirestoreCollection<Student>;
   studentDoc: AngularFirestoreDocument<Student>;
   successMsg = 'Data successfully saved.';
-  allStudent: Student[]=[];
+  allStudent: Student[] = [];
   // student:Observable<Student>
-  private studentSubscription:Subscription;
+  private studentSubscription: Subscription;
   constructor(
     private db: AngularFirestore,
     private router: Router
@@ -41,7 +41,6 @@ export class StudentService {
 
 
   async getAllStudent() {
-
     // // await this.db.collection('students').get();
     await this.studentCollection.get().pipe().toPromise().then((data) => {
       data.docs.map(a => {
@@ -50,10 +49,6 @@ export class StudentService {
     });
     // console.log(this.allStudent);
     return this.allStudent;
-    // return Observable.create((observer: Subscriber<Student>) => {
-    //   observer.next(allStudent)
-    // })
-   
   }
 
   getStudentData() { //get id of the one by one list student
@@ -101,8 +96,18 @@ export class StudentService {
     }
   }
 
-  updateStudent(id: string, formData) {
-    return this.getStudent(id).update(formData);
+  async updateStudent(id: string, formData:Student) {
+    let isExist = await this.checkExistStudent(id);
+   try {
+    if (isExist === true) {
+      this.getStudent(id).update(formData);
+      return alert('Update succecful');
+   }else{
+     return alert('Cannot find student');
+   }
+   } catch (error) {
+     console.log(error);
+     
+   }
   }
-
 }
