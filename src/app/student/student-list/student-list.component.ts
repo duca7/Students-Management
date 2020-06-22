@@ -12,17 +12,26 @@ import { Observable } from 'rxjs';
 })
 export class StudentListComponent implements OnInit {
 
-  students: Student;
+  students;
   constructor(
     private studentService: StudentService
   ) { }
 
   ngOnInit() {
+    this.getAllStudents();
+    // console.log(this.students);
 
-  this.studentService.getAllStudent();
+
+  }
+  async getAllStudents() {
+
+    await this.studentService.getAllStudent().then(a => this.students = a);
+    console.log(this.students);
+
+
   }
 
-  headers = ["Class Name", "Student ID", "First Name", "Last Name", "DOB", "Gender", "Phone Number", "Address", "Edit"];
+  headers = ["Class Name", "Student ID", "First Name", "Last Name", "DOB", "Gender", "Phone Number", "Address"];
 
 
 }

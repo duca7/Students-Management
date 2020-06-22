@@ -5,17 +5,22 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 import { Router } from '@angular/router';
 import { async } from '@angular/core/testing';
+import { Observable, Subscriber, Subscription } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
+
+
+
 export class StudentService {
 
   studentCollection: AngularFirestoreCollection<Student>;
   studentDoc: AngularFirestoreDocument<Student>;
   successMsg = 'Data successfully saved.';
+  allStudent: Student[]=[];
   // student:Observable<Student>
-
+  private studentSubscription:Subscription;
   constructor(
     private db: AngularFirestore,
     private router: Router
@@ -33,17 +38,22 @@ export class StudentService {
     })
   }
 
+
+
   async getAllStudent() {
-    let allStudent =[];
-    // return await this.db.collection('students').get();
-    await this.studentCollection.get().pipe().subscribe((data)=>{
-      data.docs.map(a=>{
-        allStudent.push(a.data());
-        console.log(a.data());
+
+    // // await this.db.collection('students').get();
+    await this.studentCollection.get().pipe().toPromise().then((data) => {
+      data.docs.map(a => {
+        this.allStudent.push(a.data());
       })
-      
     });
-    return allStudent;
+    // console.log(this.allStudent);
+    return this.allStudent;
+    // return Observable.create((observer: Subscriber<Student>) => {
+    //   observer.next(allStudent)
+    // })
+   
   }
 
   getStudentData() { //get id of the one by one list student

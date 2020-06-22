@@ -6,5 +6,15 @@
       {{column}}
     </th>
   </tr>
-
+  <tr *ngFor="let student of students">
+    <th >{{student.className}}</th>
+    <th >{{student.id}}</th>
+    <th >{{student.firstName}}</th>
+    <th >{{student.lastName}}</th>
+    <th >{{student.DOB}}</th>
+    <th >{{student.sex}}</th>
+    <th >{{student.phoneNumber}}</th>
+    <th >{{student.address}}</th>
+    
+  </tr>
 </table>
