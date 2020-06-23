@@ -15,6 +15,7 @@ export class DashBoardComponent implements OnInit {
 
   constructor(
     public studentService: StudentService,
+    public router : Router
   ) {
     this.data = {
       firstName: null,
@@ -32,11 +33,13 @@ export class DashBoardComponent implements OnInit {
 
   createStudent() {
     this.studentService.createStudent(this.data);
+    this.router.navigate(['/studentlist']);
 
   }
 
   deleteStudent() {
-    this.studentService.deleteStudent(this.data.id)
+    this.studentService.deleteStudent(this.data.id);
+    this.router.navigate(['/studentlist']);
   }
 
   removeNullNode() {
@@ -53,6 +56,7 @@ export class DashBoardComponent implements OnInit {
     console.log(cleanData);
 
     this.studentService.updateStudent(this.data.id,cleanData)
+    this.router.navigate(['/studentlist']);
   }
 
 }

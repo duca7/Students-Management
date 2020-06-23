@@ -34,7 +34,6 @@ import { environment } from 'src/environments/environment';
     ReactiveFormsModule,
     MatCardModule,
     MatIconModule,
-
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireAuthModule,
