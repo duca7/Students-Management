@@ -9,6 +9,7 @@ import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
 
 
+
 @Component({
   selector: 'app-student-list',
   templateUrl: './student-list.component.html',
@@ -22,6 +23,9 @@ export class StudentListComponent implements OnInit {
   startobs = this.startAt.asObservable();
   endobs = this.endAt.asObservable();
   searchInput;
+
+  columnsToDisplay = ['userName', 'age'];
+
   constructor(
     private studentService: StudentService,
     public db: AngularFirestore,
@@ -53,7 +57,6 @@ export class StudentListComponent implements OnInit {
   getAllStudents() {
     return this.studentService.getAllStudent().subscribe(data => {
       this.allStudents = data.map(e => e.payload.doc.data());
-      console.log(this.allStudents);
     });
   }
 
@@ -64,12 +67,13 @@ export class StudentListComponent implements OnInit {
 
 
 
-  update(data: Student) {
-    this.router.navigate(["/update"])
+  async update(data: Student) {
+    await this.studentService.sendStudentData(data);
+    this.router.navigate(["/update"]);
   }
 
   headers = ["Class Name", "Student ID", "First Name", "Last Name", "DOB", "Gender", "Phone Number", "Address"];
 
-
+ 
 }
 

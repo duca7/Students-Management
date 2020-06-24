@@ -19,6 +19,7 @@ export class StudentService {
   studentDoc: AngularFirestoreDocument<Student>;
   successMsg = 'Data successfully saved.';
   allStudent: Student[] = [];
+  studentData:Student;
   // student:Observable<Student>
   private studentSubscription: Subscription;
 
@@ -45,9 +46,11 @@ export class StudentService {
     return this.db.collection('students').snapshotChanges();
   }
 
-  getStudentData() { //get id of the one by one list student
-    // this.studentDoc = this.db.doc<Student>(`students/${id}`);
-    return this.studentDoc.valueChanges();
+  sendStudentData(data:Student) { //get id of the one by one list student
+    this.studentData=data;
+  }
+  getStudentData(){
+    return this.studentData;
   }
 
   getStudent(id: string) {

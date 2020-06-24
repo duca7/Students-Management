@@ -14,7 +14,7 @@ export class StudentUpdateComponent implements OnInit {
 
   constructor(
     public studentService: StudentService,
-    public router : Router
+    public router: Router
   ) {
     this.data = {
       firstName: null,
@@ -28,8 +28,9 @@ export class StudentUpdateComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.data = this.studentService.getStudentData();
+    console.log(this.data);
   }
-
   createStudent() {
     this.studentService.createStudent(this.data);
     this.router.navigate(['/studentlist']);
@@ -54,7 +55,7 @@ export class StudentUpdateComponent implements OnInit {
     let cleanData = this.data
     console.log(cleanData);
 
-    this.studentService.updateStudent(this.data.id,cleanData)
+    this.studentService.updateStudent(this.data.id, cleanData)
     this.router.navigate(['/studentlist']);
   }
 
