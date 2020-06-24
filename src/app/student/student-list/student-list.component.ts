@@ -55,7 +55,12 @@ export class StudentListComponent implements OnInit {
     });
   }
 
-  headers = ["Class Name", "Student ID", "First Name", "Last Name", "DOB", "Gender", "Phone Number", "Address", "Edit"];
+
+  delete(id:string){
+    this.studentService.deleteStudent(id);
+  }
+
+  headers = ["Class Name", "Student ID", "First Name", "Last Name", "DOB", "Gender", "Phone Number", "Address"];
 
 
 }
