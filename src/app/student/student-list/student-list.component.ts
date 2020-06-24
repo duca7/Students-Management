@@ -1,4 +1,3 @@
-import { Router } from '@angular/router';
 import { Student } from './../../model/student.model';
 import { StudentService } from './../../service/student.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
@@ -7,6 +6,7 @@ import { Observable, Subject } from 'rxjs';
 import { timer, combineLatest } from 'rxjs';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { map } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -25,7 +25,7 @@ export class StudentListComponent implements OnInit {
   constructor(
     private studentService: StudentService,
     public db: AngularFirestore,
-    public router : Router
+    public router: Router
   ) { }
 
   ngOnInit() {
@@ -58,8 +58,14 @@ export class StudentListComponent implements OnInit {
   }
 
 
-  delete(id:string){
+  delete(id: string) {
     this.studentService.deleteStudent(id);
+  }
+
+
+
+  update(data: Student) {
+    this.router.navigate(["/update"])
   }
 
   headers = ["Class Name", "Student ID", "First Name", "Last Name", "DOB", "Gender", "Phone Number", "Address"];
