@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Student } from './../../model/student.model';
 import { StudentService } from './../../service/student.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
@@ -23,7 +24,8 @@ export class StudentListComponent implements OnInit {
   searchInput;
   constructor(
     private studentService: StudentService,
-    public db: AngularFirestore
+    public db: AngularFirestore,
+    public router : Router
   ) { }
 
   ngOnInit() {

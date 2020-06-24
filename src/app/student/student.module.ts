@@ -21,6 +21,7 @@ import { StudentUpdateComponent } from './student-update/student-update.componen
 const routes : Routes =[
   {path: 'studentlist',component:StudentListComponent},
   {path: 'dashboard', component: DashBoardComponent},
+  {path: 'update', component:StudentUpdateComponent}
 
 ]
 
