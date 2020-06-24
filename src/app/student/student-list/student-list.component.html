@@ -20,7 +20,7 @@
     <th>{{student.phoneNumber}}</th>
     <th>{{student.address}}</th>
     <th>
-      <mat-icon >edit</mat-icon>
+      <mat-icon (click)="update(student)">edit</mat-icon>
     </th>
     <th>
       <mat-icon style="margin-left: 7px;" (click)="delete(student.id)">delete</mat-icon>
