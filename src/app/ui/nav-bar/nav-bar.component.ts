@@ -10,7 +10,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrls: ['./nav-bar.component.scss']
 })
 export class NavBarComponent implements OnInit {
-
+  searchInput;
   avt = '';
   constructor(
     public router: Router,
@@ -36,6 +36,10 @@ export class NavBarComponent implements OnInit {
     return this.afAuth.signOut().then(() =>{
       this.router.navigate(['/studentlist']);
     })
+  }
+  searchData(){
+   
+    
   }
 
 }

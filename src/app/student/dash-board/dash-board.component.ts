@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { StudentService } from 'src/app/service/student.service';
 import { Student } from 'src/app/model/student.model';
-import { Router } from '@angular/router';
 
 
 @Component({
@@ -32,7 +31,8 @@ export class DashBoardComponent implements OnInit {
 
   createStudent() {
     this.studentService.createStudent(this.data);
-
+    // console.log(this.data.DOB.toString());
+    
   }
 
   deleteStudent() {
@@ -52,7 +52,7 @@ export class DashBoardComponent implements OnInit {
     let cleanData = this.data
     console.log(cleanData);
 
-    this.studentService.updateStudent(this.data.id,cleanData)
+    this.studentService.updateStudent(this.data.id, cleanData)
   }
 
 }

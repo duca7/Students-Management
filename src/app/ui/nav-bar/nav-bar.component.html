@@ -22,7 +22,7 @@
         <p> STD-M </p>
       </div>
       <mat-form-field  class="search-bar">
-        <input matInput placeholder="Search" required autocomplete="off">
+        <input matInput placeholder="Search" required autocomplete="off" [(ngModel)]="searchInput" (keyup.enter)="searchData()">
         <mat-icon matSuffix>search</mat-icon>
       </mat-form-field>
       <span class="example-spacer"></span>

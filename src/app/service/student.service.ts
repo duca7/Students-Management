@@ -15,12 +15,13 @@ import { Observable, Subscriber, Subscription } from 'rxjs';
 
 export class StudentService {
 
-  studentCollection: AngularFirestoreCollection<Student>;
+  studentCollection: AngularFirestoreCollection<Student> = null;
   studentDoc: AngularFirestoreDocument<Student>;
   successMsg = 'Data successfully saved.';
   allStudent: Student[] = [];
   // student:Observable<Student>
   private studentSubscription: Subscription;
+
   constructor(
     private db: AngularFirestore,
     private router: Router
@@ -40,15 +41,8 @@ export class StudentService {
 
 
 
-  async getAllStudent() {
-    // // await this.db.collection('students').get();
-    await this.studentCollection.get().pipe().toPromise().then((data) => {
-      data.docs.map(a => {
-        this.allStudent.push(a.data());
-      })
-    });
-    // console.log(this.allStudent);
-    return this.allStudent;
+  getAllStudent() {
+    return this.db.collection('students').snapsho1tChanges();
   }
 
   getStudentData() { //get id of the one by one list student
@@ -86,28 +80,28 @@ export class StudentService {
     }
   }
 
-  async deleteStudent(id: string) {
+  async deleteStudent(id: string): Promise<void> {
     let isExist = await this.checkExistStudent(id);
     if (isExist === true) {
-      this.getStudent(id).delete();
-      return alert('Delete succesfull');
+      await this.getStudent(id).delete();
+      alert('Delete succesfull');
     } else {
       return alert('Cannot find student');
     }
   }
 
-  async updateStudent(id: string, formData:Student) {
+  async updateStudent(id: string, formData: Student) :Promise<void>{
     let isExist = await this.checkExistStudent(id);
-   try {
-    if (isExist === true) {
-      this.getStudent(id).update(formData);
-      return alert('Update succecful');
-   }else{
-     return alert('Cannot find student');
-   }
-   } catch (error) {
-     console.log(error);
-     
-   }
+    try {
+      if (isExist === true) {
+        await this.getStudent(id).update(formData);
+        return alert('Update succecful');
+      } else {
+        return alert('Cannot find student');
+      }
+    } catch (error) {
+      console.log(error);
+
+    }
   }
 }
