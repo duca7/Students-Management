@@ -16,6 +16,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {MatTableModule} from '@angular/material/table';
+import { StudentUpdateComponent } from './student-update/student-update.component';
 
 const routes : Routes =[
   {path: 'studentlist',component:StudentListComponent},
@@ -24,7 +25,7 @@ const routes : Routes =[
 ]
 
 @NgModule({
-  declarations: [DashBoardComponent, StudentListComponent],
+  declarations: [DashBoardComponent, StudentListComponent, StudentUpdateComponent],
   imports: [
     CommonModule,
     UIModule,
