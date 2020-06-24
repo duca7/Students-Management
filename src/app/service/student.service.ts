@@ -80,7 +80,6 @@ export class StudentService {
     if (isExist != true) {
       return this.studentCollection.doc(data.id).set(data).then(_ =>
         alert(this.successMsg));
-
     } else {
       return alert('Your account is already exsit');
     }
@@ -107,7 +106,7 @@ export class StudentService {
    }
    } catch (error) {
      console.log(error);
-     
+
    }
   }
 }

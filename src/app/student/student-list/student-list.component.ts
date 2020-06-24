@@ -31,7 +31,7 @@ export class StudentListComponent implements OnInit {
 
   }
 
-  headers = ["Class Name", "Student ID", "First Name", "Last Name", "DOB", "Gender", "Phone Number", "Address"];
+  headers = ["Class Name", "Student ID", "First Name", "Last Name", "DOB", "Gender", "Phone Number", "Address", "Edit"];
 
 
 }
