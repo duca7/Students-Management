@@ -42,7 +42,7 @@ export class StudentService {
 
 
   getAllStudent() {
-    return this.db.collection('students').snapsho1tChanges();
+    return this.db.collection('students').snapshotChanges();
   }
 
   getStudentData() { //get id of the one by one list student
@@ -74,7 +74,6 @@ export class StudentService {
     if (isExist != true) {
       return this.studentCollection.doc(data.id).set(data).then(_ =>
         alert(this.successMsg));
-
     } else {
       return alert('Your account is already exsit');
     }

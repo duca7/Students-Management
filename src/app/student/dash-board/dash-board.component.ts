@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { StudentService } from 'src/app/service/student.service';
 import { Student } from 'src/app/model/student.model';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -14,6 +15,7 @@ export class DashBoardComponent implements OnInit {
 
   constructor(
     public studentService: StudentService,
+    public router : Router
   ) {
     this.data = {
       firstName: null,
@@ -31,12 +33,13 @@ export class DashBoardComponent implements OnInit {
 
   createStudent() {
     this.studentService.createStudent(this.data);
-    // console.log(this.data.DOB.toString());
-    
+    this.router.navigate(['/studentlist']);
+
   }
 
   deleteStudent() {
-    this.studentService.deleteStudent(this.data.id)
+    this.studentService.deleteStudent(this.data.id);
+    this.router.navigate(['/studentlist']);
   }
 
   removeNullNode() {
@@ -52,7 +55,8 @@ export class DashBoardComponent implements OnInit {
     let cleanData = this.data
     console.log(cleanData);
 
-    this.studentService.updateStudent(this.data.id, cleanData)
+    this.studentService.updateStudent(this.data.id,cleanData)
+    this.router.navigate(['/studentlist']);
   }
 
 }

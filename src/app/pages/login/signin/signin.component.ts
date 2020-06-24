@@ -62,7 +62,7 @@ export class SigninComponent implements OnInit {
     const credetial = await this.afAuth.signInWithPopup(provider);
     return this.authService.updateUserData(credetial.user)
     .then(() => {
-      this.snackBar.open('Success!', 'OK', {duration: 2000});
+      this.snackBar.open('Welcome', 'OK', {duration:2000});
       this.router.navigate(['/studentlist']);
     })
     .catch((err) => {

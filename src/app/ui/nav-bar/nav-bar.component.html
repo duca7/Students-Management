@@ -8,7 +8,6 @@
         <p>STD-M</p>
       </div>
       <span class="example-spacer"></span>
-      <button mat-raised-button class="write-post">Create a list</button>
       <button mat-raised-button class="btn-login" (click)="router.navigate(['Login'])">Login</button>
     </mat-toolbar-row>
   </mat-toolbar>
@@ -19,7 +18,7 @@
 
     <mat-toolbar-row>
       <div>
-        <p> STD-M </p>
+        <p (click)="router.navigate(['/studentlist'])" > STD-M </p>
       </div>
       <mat-form-field  class="search-bar">
         <input matInput placeholder="Search" required autocomplete="off" [(ngModel)]="searchInput" (keyup.enter)="searchData()">
