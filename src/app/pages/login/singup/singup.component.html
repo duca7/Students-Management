@@ -1,28 +1,28 @@
 <div class="sign-up">
   <div class="sign-up-title">
-    <h1 mat-dialog-title>Sign Up Here</h1>
+    <h1 mat-dialog-title style="font-family: sans-serif;">Sign Up Here</h1>
   </div>
 
   <div class="sign-up-content">
     <div mat-dialog-content>
-           <mat-form-field appearance="fill" style="width: 80%; height: 20%;">
+           <mat-form-field appearance="outline"  style="width: 80%; height: 20%;">
               <mat-label>Enter your email</mat-label>
-              <input matInput placeholder="teo@gmail.com" [formControl]="email" required>
+              <input matInput placeholder="teo@gmail.com" [formControl]="email" required autocomplete="off">
               <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
             </mat-form-field>
 
-            <mat-form-field appearance="fill" style="width: 80%; height: 20%;">
+            <mat-form-field appearance="outline"  style="width: 80%; height: 20%;">
               <mat-label>Enter your password</mat-label>
-              <input matInput placeholder="password" [formControl]="password" required type='password' [type]="hide ? 'password' : 'text'">
+              <input matInput placeholder="password" [formControl]="password" required type='password' [type]="hide ? 'password' : 'text'" autocomplete="off">
               <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                 <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                 </button>
                 <mat-error *ngIf="password.invalid">{{getPasswordError()}}</mat-error>
             </mat-form-field>
 
-            <mat-form-field appearance="fill" style="width: 80%; height: 20%;">
+            <mat-form-field appearance="outline"  style="width: 80%; height: 20%;">
               <mat-label>Enter your password again</mat-label>
-              <input matInput placeholder="password" [formControl]="retypePassword" required type='password' [type]="hide ? 'password' : 'text'">
+              <input matInput placeholder="password" [formControl]="retypePassword" required type='password' [type]="hide ? 'password' : 'text'" autocomplete="off">
               <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                 <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                 </button>
