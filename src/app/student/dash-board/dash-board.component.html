@@ -9,7 +9,7 @@
     <br>
     <mat-form-field appearance="outline" class="class-add">
       <mat-label>Student ID</mat-label>
-      <input matInput required autocomplete="off" [(ngModel)]="data.id">
+      <input matInput required autocomplete="off" [(ngModel)]="data.id" >
     </mat-form-field>
     <br>
     <mat-form-field appearance="outline" style="margin-left: 10%;">
@@ -22,11 +22,9 @@
       <input [(ngModel)]="data.lastName" matInput required autocomplete="off">
     </mat-form-field>
     <br>
-    <mat-form-field style="margin-left: 10%;">
-      <mat-label>Choose a date</mat-label>
-      <input [(ngModel)]="data.DOB" matInput [matDatepicker]="picker" required autocomplete="off">
-      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
+    <mat-form-field appearance="outline" style="margin-left: 10%;">
+      <mat-label>DOB</mat-label>
+      <input [(ngModel)]="data.DOB" matInput  required autocomplete="off">
     </mat-form-field>
 
     <mat-form-field appearance="fill" style="margin-left: 5%;">

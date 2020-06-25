@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { StudentService } from 'src/app/service/student.service';
 import { Student } from 'src/app/model/student.model';
 import { Router } from '@angular/router';
+import { FormControl, Validators } from '@angular/forms';
 
 
 @Component({
@@ -30,6 +31,7 @@ export class DashBoardComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
 
   createStudent() {
     this.studentService.createStudent(this.data);

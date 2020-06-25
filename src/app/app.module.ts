@@ -11,7 +11,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StudentModule } from './student/student.module';
-import { AuthGuard } from './guards/auth.guard';
+
 
 @NgModule({
   declarations: [
@@ -28,7 +28,7 @@ import { AuthGuard } from './guards/auth.guard';
     BrowserAnimationsModule,
     StudentModule,
   ],
-  providers: [AuthGuard],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
