@@ -1,34 +1,57 @@
 <app-nav-bar></app-nav-bar>
-<mat-form-field class="search-bar">
-  <input matInput placeholder="Search" required autocomplete="off" [(ngModel)]="searchInput"
-    (keyup.enter)="searchStudent()">
-  <mat-icon matSuffix>search</mat-icon>
-</mat-form-field>
+<div *ngIf="afAuth.user | async; then authenticated else guest">
+</div>
+<ng-template #guest>
+  <table>
+    <tr>
+      <th *ngFor="let column of headers">
+        {{column}}
+      </th>
+    </tr>
+    <tr *ngFor="let student of allStudents">
+      <th>{{student.className}}</th>
+      <th>{{student.id}}</th>
+      <th>{{student.firstName}}</th>
+      <th>{{student.lastName}}</th>
+      <th>{{student.DOB}}</th>
+      <th>{{student.sex}}</th>
+      <th>{{student.phoneNumber}}</th>
+      <th>{{student.address}}</th>
+   </tr>
+  </table>
+</ng-template>
 
-<table>
-  <tr>
-    <th *ngFor="let column of headers">
-      {{column}}
-    </th>
-  </tr>
-  <tr *ngFor="let student of allStudents">
-    <th>{{student.className}}</th>
-    <th>{{student.id}}</th>
-    <th>{{student.firstName}}</th>
-    <th>{{student.lastName}}</th>
-    <th>{{student.DOB}}</th>
-    <th>{{student.sex}}</th>
-    <th>{{student.phoneNumber}}</th>
-    <th>{{student.address}}</th>
-    <th>
+<ng-template #authenticated>
+  <mat-form-field class="search-bar">
+    <input matInput placeholder="Search" required autocomplete="off" [(ngModel)]="searchInput"
+      (keyup.enter)="searchStudent()">
+    <mat-icon matSuffix>search</mat-icon>
+  </mat-form-field>
 
-      <mat-icon (click)="update(student)">edit</mat-icon>
+  <table>
+    <tr>
+      <th *ngFor="let column of headers">
+        {{column}}
+      </th>
+    </tr>
+    <tr *ngFor="let student of allStudents">
+      <th>{{student.className}}</th>
+      <th>{{student.id}}</th>
+      <th>{{student.firstName}}</th>
+      <th>{{student.lastName}}</th>
+      <th>{{student.DOB}}</th>
+      <th>{{student.sex}}</th>
+      <th>{{student.phoneNumber}}</th>
+      <th>{{student.address}}</th>
+      <th>
+        <mat-icon (click)="update(student)">edit</mat-icon>
+      </th>
+      <th>
+        <mat-icon (click)="delete(student.id)">delete</mat-icon>
+      </th>
 
-    </th>
-    <th>
-      <mat-icon style="margin-left: 7px;" (click)="delete(student.id)">delete</mat-icon>
-    </th>
+    </tr>
+  </table>
+</ng-template>
 
-  </tr>
-</table>
 

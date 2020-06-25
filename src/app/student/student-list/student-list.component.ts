@@ -7,6 +7,8 @@ import { timer, combineLatest } from 'rxjs';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/service/auth.service';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 
 
@@ -29,7 +31,9 @@ export class StudentListComponent implements OnInit {
   constructor(
     private studentService: StudentService,
     public db: AngularFirestore,
-    public router: Router
+    public router: Router,
+    public auth: AuthService,
+    public afAuth: AngularFireAuth,
   ) { }
 
   ngOnInit() {
@@ -74,6 +78,6 @@ export class StudentListComponent implements OnInit {
 
   headers = ["Class Name", "Student ID", "First Name", "Last Name", "DOB", "Gender", "Phone Number", "Address"];
 
- 
+
 }
 

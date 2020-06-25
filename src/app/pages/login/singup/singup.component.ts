@@ -55,9 +55,11 @@ export class SingupComponent implements OnInit {
       this.email.reset();
       this.password.reset();
       this.retypePassword.reset();
-      this.router.navigate(['Home']);
+      this.router.navigate(['/studentlist']);
+      this.dialogRef.close(SingupComponent);
     }).catch((err) => {
       this.snackBar.open(err, 'OK', {duration: 2000});
     });
   }
+
 }

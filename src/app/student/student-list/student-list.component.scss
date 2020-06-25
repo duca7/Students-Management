@@ -1,17 +1,25 @@
+
 table {
   width: 100%;
   margin-top: 1%;
+  background-color: blue($color: #000000);
 }
 
 tr{
-  border: 0.5px solid black;
+  border: 0.5px solid red;
 }
 
 th{
-  border: 0.5px solid black;
+  border: 0.5px solid #353535;
 }
 
 mat-icon{
   width: 1vw;
   cursor: pointer;
+}
+
+.search-bar{
+  display: block;
+  text-align: center;
+  margin-top: 1%;
 }
