@@ -1,51 +1,54 @@
-<app-nav-bar></app-nav-bar>
+<div class="sdt-update">
+  <app-nav-bar></app-nav-bar>
 
-<div class="card">
-  <div class="test">
-    <mat-form-field appearance="outline" class="class-add">
-      <mat-label>CLass Name</mat-label>
-      <input matInput [(ngModel)]="data.className" required autocomplete="off" class="class-name">
-    </mat-form-field>
+  <div class="card">
+    <div class="test">
+      <mat-form-field appearance="outline" class="class-add">
+        <mat-label>CLass Name</mat-label>
+        <input matInput [(ngModel)]="data.className" required autocomplete="off" class="class-name">
+      </mat-form-field>
+      <br>
+      <mat-form-field appearance="outline" class="class-add">
+        <mat-label>Student ID</mat-label>
+        <input matInput required autocomplete="off" [(ngModel)]="data.id">
+      </mat-form-field>
+      <br>
+      <mat-form-field appearance="outline" style="margin-left: 10%;">
+        <mat-label>First Name</mat-label>
+        <input matInput required autocomplete="off" [(ngModel)]="data.firstName">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" style="margin-left: 5%;">
+        <mat-label>Last Name</mat-label>
+        <input [(ngModel)]="data.lastName" matInput required autocomplete="off">
+      </mat-form-field>
+      <br>
+      <mat-form-field appearance="outline" style="margin-left: 10%;">
+        <mat-label>DOB</mat-label>
+        <input [(ngModel)]="data.DOB" matInput  required autocomplete="off">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" style="margin-left: 5%;">
+        <mat-label>Sex</mat-label>
+        <mat-select [(ngModel)]="data.sex">
+          <mat-option value="female">Female</mat-option>
+          <mat-option value="male">Male</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" style="margin-left: 6%;" >
+        <mat-label>Phone Number</mat-label>
+        <input [(ngModel)]="data.phoneNumber" matInput required autocomplete="off">
+      </mat-form-field>
     <br>
-    <mat-form-field appearance="outline" class="class-add">
-      <mat-label>Student ID</mat-label>
-      <input matInput required autocomplete="off" [(ngModel)]="data.id">
-    </mat-form-field>
+      <mat-form-field appearance="outline" class="class-add">
+        <mat-label>Adrress</mat-label>
+        <input [(ngModel)]="data.address" matInput required autocomplete="off">
+      </mat-form-field>
     <br>
-    <mat-form-field appearance="outline" style="margin-left: 10%;">
-      <mat-label>First Name</mat-label>
-      <input matInput required autocomplete="off" [(ngModel)]="data.firstName">
-    </mat-form-field>
+    <button mat-raised-button style="margin: 2% 0 0 45%;" (click)=" updateStudent()" >Update</button>
+    </div>
 
-    <mat-form-field appearance="outline" style="margin-left: 5%;">
-      <mat-label>Last Name</mat-label>
-      <input [(ngModel)]="data.lastName" matInput required autocomplete="off">
-    </mat-form-field>
-    <br>
-    <mat-form-field appearance="outline" style="margin-left: 10%;">
-      <mat-label>DOB</mat-label>
-      <input [(ngModel)]="data.DOB" matInput  required autocomplete="off">
-    </mat-form-field>
-
-    <mat-form-field appearance="fill" style="margin-left: 5%;">
-      <mat-label>Sex</mat-label>
-      <mat-select [(ngModel)]="data.sex">
-        <mat-option value="female">Female</mat-option>
-        <mat-option value="male">Male</mat-option>
-      </mat-select>
-    </mat-form-field>
-
-    <mat-form-field appearance="outline" style="margin-left: 6%;" >
-      <mat-label>Phone Number</mat-label>
-      <input [(ngModel)]="data.phoneNumber" matInput required autocomplete="off">
-    </mat-form-field>
-  <br>
-    <mat-form-field appearance="outline" class="class-add">
-      <mat-label>Adrress</mat-label>
-      <input [(ngModel)]="data.address" matInput required autocomplete="off">
-    </mat-form-field>
-  <br>
-  <button mat-raised-button style="margin: 2% 0 0 45%;" (click)=" updateStudent()" >Update</button>
   </div>
 
 </div>
