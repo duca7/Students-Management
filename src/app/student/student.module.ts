@@ -18,17 +18,18 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 
 import { StudentUpdateComponent } from './student-update/student-update.component';
+import { TeacherComponent } from './teacher/teacher.component';
 
 
 const routes : Routes =[
   {path: 'studentlist',component:StudentListComponent},
   {path: 'dashboard', component: DashBoardComponent},
-  {path: 'update', component:StudentUpdateComponent}
-
+  {path: 'update', component:StudentUpdateComponent},
+  {path: 'teacher', component:TeacherComponent}
 ]
 
 @NgModule({
-  declarations: [DashBoardComponent, StudentListComponent, StudentUpdateComponent],
+  declarations: [DashBoardComponent, StudentListComponent, StudentUpdateComponent, TeacherComponent],
   imports: [
     CommonModule,
     UIModule,
@@ -48,7 +49,8 @@ const routes : Routes =[
   ],
   exports:[
     StudentListComponent,
-    DashBoardComponent
+    DashBoardComponent,
+    TeacherComponent
   ]
 })
 export class StudentModule { }

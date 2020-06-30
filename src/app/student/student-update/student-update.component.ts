@@ -49,6 +49,7 @@ export class StudentUpdateComponent implements OnInit {
       }
     }
   }
+  //
 
   async updateStudent() {
     await this.removeNullNode();
